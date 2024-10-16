@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    command: python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: Ds5DTAxP
+      POSTGRES_PASSWORD: 5nFyHgRtx8z3Mf5kcar8d2D4yQrVgFE2
+    ports:
+      - "5432:5432"

@@ -1,21 +1,21 @@
-# Django Local Library
+# Shipper Comparator (Work in Progress)
 
-Tutorial "Local Library" website written in Django.
+**Shipper Comparator** is a web application designed to compare shipping rates and services across various companies. The current status of the project is incomplete, and several key features still need development.
 
-For detailed information about this project see the associated [MDN tutorial home page](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website).
+## Project Status
 
-## Overview
-
-This web application creates an online catalog for a small local library, where users can browse available books and manage their accounts.
-
-The main features that have currently been implemented are:
-
-* There are models for books, book copies, genre, language and authors.
-* Users can view list and detail information for books and authors.
-* Admin users can create and manage models. The admin has been optimised (the basic registration is present in admin.py, but commented out).
-* Librarians can renew reserved books.
-
-![Local Library Model](https://raw.githubusercontent.com/mdn/django-locallibrary-tutorial/master/catalog/static/images/local_library_model_uml.png)
+- **Core functionality**: Basic structure and setup are done.
+- **Pending features**:
+  - API integration for shipping providers.
+  - Price and delivery time comparison logic.
+  - UI/UX design improvements.
+- **Testing**: No tests implemented yet.
+  
+### Next Steps
+1. **API Integration**: Integrate the APIs from selected shipping companies (see `api_providers.txt` for details).
+2. **Comparison Algorithm**: Develop the logic for comparing rates and delivery times (started in `views.py`).
+3. **UI Improvements**: Current UI is a placeholder; design and implement final frontend components in `frontend/` folder.
+4. **Testing**: Write unit tests for comparison and integration logic (focus on `test_views.py`).
 
 
 ## Quick Start
@@ -37,3 +37,32 @@ To get this project up and running locally on your computer:
 1. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site
 1. Create a few test objects of each type.
 1. Open tab to `http://127.0.0.1:8000` to see the main site, with your new objects.
+
+## Docker Setup
+To use Docker for running the project:
+
+1. Ensure Docker is installed and running on your system.
+
+2. Build the Docker image:
+```
+docker build -t shipper-comparator .
+
+```
+
+3. Run the Docker container:
+```
+docker run -p 8000:8000 --env-file .env shipper-comparator
+
+```
+This will expose the application at http://localhost:8000.
+
+4. (Optional) Use Docker Compose for easier management. If docker-compose.yml is set up, just run:
+```
+docker-compose up
+
+```
+This will start the app with all services (e.g., database) running in containers.
+
+
+## License
+Licensed under CC0-1.0.

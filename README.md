@@ -1,68 +1,109 @@
-# Shipper Comparator (Work in Progress)
+Aquí tienes el archivo en formato `.md` que puedes copiar y pegar:
 
-**Shipper Comparator** is a web application designed to compare shipping rates and services across various companies. The current status of the project is incomplete, and several key features still need development.
+# Django App Template with Docker
 
-## Project Status
+This repository provides a boilerplate template for building Django-based web applications using Docker. It comes pre-configured with all the essentials to streamline the development and deployment process.
 
-- **Core functionality**: Basic structure and setup are done.
-- **Pending features**:
-  - API integration for shipping providers.
-  - Price and delivery time comparison logic.
-  - UI/UX design improvements.
-- **Testing**: No tests implemented yet.
-  
-### Next Steps
-1. **API Integration**: Integrate the APIs from selected shipping companies (see `api_providers.txt` for details).
-2. **Comparison Algorithm**: Develop the logic for comparing rates and delivery times (started in `views.py`).
-3. **UI Improvements**: Current UI is a placeholder; design and implement final frontend components in `frontend/` folder.
-4. **Testing**: Write unit tests for comparison and integration logic (focus on `test_views.py`).
+## Features
 
+- **Django 4.x**: Latest version of Django for rapid application development.
+- **Docker**: Simplified containerization for development, testing, and production environments.
+- **PostgreSQL**: Pre-configured database for scalable and reliable data storage.
+- **Gunicorn**: WSGI server for deployment.
+- **nginx**: Reverse proxy setup for handling client requests.
+- **Environment Variables**: Easy configuration using `.env` files.
+- **Pre-configured Services**: Health checks, logging, and database migrations.
 
-## Quick Start
+## Getting Started
 
-To get this project up and running locally on your computer:
-1. Set up the [Python development environment](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment).
-   We recommend using a Python virtual environment.
-   > **Note:** This has been tested against Django 3.10 (and may not work or be "optimal" for other versions).
-1. Assuming you have Python setup, run the following commands (if you're on Windows you may use `py` or `py -3` instead of `python` to start Python):
+### Prerequisites
+
+Ensure you have Docker and Docker Compose installed on your machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Setup
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/yourusername/django-app-template.git
+   cd django-app-template
    ```
-   pip3 install -r requirements.txt
-   python3 manage.py makemigrations
-   python3 manage.py migrate
-   python3 manage.py collectstatic
-   python3 manage.py test # Run the standard tests. These should all pass.
-   python3 manage.py createsuperuser # Create a superuser
-   python3 manage.py runserver
+
+2. **Create and configure the `.env` file**:
+
+   Rename the `.env.example` file to `.env` and adjust the values according to your environment.
+
+   ```bash
+   cp .env.example .env
    ```
-1. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site
-1. Create a few test objects of each type.
-1. Open tab to `http://127.0.0.1:8000` to see the main site, with your new objects.
 
-## Docker Setup
-To use Docker for running the project:
+3. **Build and run the containers**:
 
-1. Ensure Docker is installed and running on your system.
+   ```bash
+   docker-compose up --build
+   ```
 
-2. Build the Docker image:
+4. **Run migrations**:
+
+   ```bash
+   docker-compose exec web python manage.py migrate
+   ```
+
+5. **Create a superuser** (for accessing the Django admin):
+
+   ```bash
+   docker-compose exec web python manage.py createsuperuser
+   ```
+
+6. **Access the application**:
+
+   Open your browser and go to `http://localhost:8000`.
+
+## Project Structure
+
 ```
-docker build -t shipper-comparator .
-
+├── Dockerfile          # Instructions for Docker to build the app
+├── docker-compose.yml  # Defines the services (web, db, nginx)
+├── .env.example        # Example environment variables
+├── app/                # Django project files
+│   ├── manage.py
+│   └── ...
+└── README.md           # You're here!
 ```
 
-3. Run the Docker container:
-```
-docker run -p 8000:8000 <your-user-here>/shipper-comparator
+## Development
 
-```
-This will expose the application at http://localhost:8000.
+To run the project in development mode with hot-reloading:
 
-4. (Optional) Use Docker Compose for easier management. If docker-compose.yml is set up, just run:
-```
+```bash
 docker-compose up
-
 ```
-This will start the app with all services (e.g., database) running in containers.
 
+## Deployment
+
+1. Ensure the `.env` file is configured for production (adjust the settings).
+2. Build the production images:
+
+   ```bash
+   docker-compose -f docker-compose.prod.yml up --build
+   ```
+
+3. Start the services:
+
+   ```bash
+   docker-compose -f docker-compose.prod.yml up
+   ```
+
+## Contributing
+
+Feel free to fork this repository, make improvements, and submit pull requests.
 
 ## License
-Licensed under CC0-1.0.
+
+This project is licensed under the MIT License.
+```
+
+Este formato está listo para ser copiado directamente a tu archivo `README.md`.

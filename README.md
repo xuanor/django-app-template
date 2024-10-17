@@ -51,7 +51,7 @@ docker build -t shipper-comparator .
 
 3. Run the Docker container:
 ```
-docker run -p 8000:8000 --env-file .env shipper-comparator
+docker run -p 8000:8000 <your-user-here>/shipper-comparator
 
 ```
 This will expose the application at http://localhost:8000.

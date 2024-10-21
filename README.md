@@ -9,8 +9,6 @@ This repository provides a boilerplate template for building Django-based web ap
 - **Django 4.x**: Latest version of Django for rapid application development.
 - **Docker**: Simplified containerization for development, testing, and production environments.
 - **PostgreSQL**: Pre-configured database for scalable and reliable data storage.
-- **Gunicorn**: WSGI server for deployment.
-- **nginx**: Reverse proxy setup for handling client requests.
 - **Environment Variables**: Easy configuration using `.env` files.
 - **Pre-configured Services**: Health checks, logging, and database migrations.
 
@@ -105,5 +103,3 @@ Feel free to fork this repository, make improvements, and submit pull requests.
 
 This project is licensed under the MIT License.
 ```
-
-Este formato está listo para ser copiado directamente a tu archivo `README.md`.

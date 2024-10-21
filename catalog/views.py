@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 
-from .models import Book, Author, BookInstance, Genre, Language
+from .models import Book, Author, BookInstance, Genre, Language, Provideer
 
 def index(request):
     """View function for home page of site."""
@@ -38,6 +39,15 @@ class BookListView(generic.ListView):
 class BookDetailView(generic.DetailView):
     """Generic class-based detail view for a book."""
     model = Book
+
+class ProvideerListView(generic.ListView):
+    """Generic class-based view for a list of books."""
+    model = Provideer
+
+class ProvideerDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Provideer
+
 
 class AuthorListView(generic.ListView):
     """Generic class-based list view for a list of authors."""
@@ -179,6 +189,32 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
             )
 
 # Classes created for the forms challenge
+
+
+class ProvideerCreate(PermissionRequiredMixin, CreateView):
+    model = Provideer
+    fields = ['companyName', 'orderNumber', 'inspector', 'inspectionDate']
+    permission_required = 'provideer.add_book'
+
+
+class ProvideerUpdate(PermissionRequiredMixin, UpdateView):
+    model = Provideer
+    fields = ['companyName', 'orderNumber', 'inspector', 'inspectionDate']
+    permission_required = 'provideer.change_book'
+
+
+class ProvideerDelete(PermissionRequiredMixin, DeleteView):
+    model = Provideer
+    permission_required = 'provideer.delete_book'
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+            return HttpResponseRedirect(self.success_url)
+        except Exception as e:
+            return HttpResponseRedirect(
+                reverse("provideer-delete", kwargs={"pk": self.object.pk})
+            )
 
 
 class BookCreate(PermissionRequiredMixin, CreateView):

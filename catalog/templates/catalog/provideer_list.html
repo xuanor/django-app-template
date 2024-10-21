@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Provideer List</h1>
+
+    {% if provideer_list %}
+    <ul>
+
+      {% for provideer in provideer_list %}
+      <li>
+        <a href="{{ provideer.get_absolute_url }}">{{ provideer.companyName }}</a> ({{provideer.inspector}})
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Inspection date: {{ provideer.inspectionDate }}</p>
+    {% endif %}       
+{% endblock %}
+

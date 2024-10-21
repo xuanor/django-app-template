@@ -14,6 +14,7 @@ admin.site.register(Language)
 
 admin.site.register(Genre)
 admin.site.register(Language)
+# admin.site.register(Provideer)
 
 
 class BooksInline(admin.TabularInline):
@@ -73,3 +74,6 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('status', 'due_back', 'borrower')
         }),
     )
+
+# class ProvideerAdmin(admin.ModelAdmin):
+#     list_display = ('orderNumber', 'inspector', 'inspectionDate')

@@ -93,16 +93,14 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME'),  # Nombre de tu base de datos en RDS
-        'USER': os.getenv('DATABASE_USER'),  # Usuario de la base de datos en RDS
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),  # Contraseña del usuario de RDS
-        'HOST': os.getenv('DATABASE_HOST'),  # Endpoint de tu RDS (sin el puerto)
-        'PORT': os.getenv('DATABASE_PORT', '5432'),  # Puerto (normalmente 5432)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation

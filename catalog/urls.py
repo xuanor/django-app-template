@@ -10,6 +10,8 @@ urlpatterns = [
     path('authors/', views.AuthorListView.as_view(), name='authors'),
     path('author/<int:pk>',
          views.AuthorDetailView.as_view(), name='author-detail'),
+    path('provideers/', views.ProvideerListView.as_view(), name='provideers'),
+    path('provideer/<int:pk>', views.ProvideerDetailView.as_view(), name='provideer-detail'),
 ]
 
 
@@ -37,6 +39,13 @@ urlpatterns += [
     path('book/create/', views.BookCreate.as_view(), name='book-create'),
     path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book-update'),
     path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book-delete'),
+]
+
+# Add URLConf to create, update, and delete books
+urlpatterns += [
+    path('provideer/create/', views.ProvideerCreate.as_view(), name='provideer-create'),
+    path('provideer/<int:pk>/update/', views.ProvideerUpdate.as_view(), name='provideer-update'),
+    path('provideer/<int:pk>/delete/', views.ProvideerDelete.as_view(), name='provideer-delete'),
 ]
 
 

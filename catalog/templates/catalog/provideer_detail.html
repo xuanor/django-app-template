@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Provideer: {{ provideer.companyName }}</h1>
+
+<p><strong>Order number: </strong>{{ provideer.orderNumber }}</p>
+<p><strong>Inspector: </strong> {{ provideer.inspector }}</p>
+<p><strong>Inspection date:</strong> {{ provideer.inspectionDate }}</p>
+
+<div style="margin-left:20px;margin-top:20px">
+
+{% endblock %}
+
+{% block sidebar %}
+  {{ block.super }}
+
+  <hr>
+  <ul class="sidebar-nav">
+      <li><a href="{% url 'provideer-update' provideer.id %}">Update Provideer</a></li>
+      <li><a href="{% url 'provideer-delete' provideer.id %}">Delete Provideer</a></li>
+    </ul>
+
+{% endblock %}

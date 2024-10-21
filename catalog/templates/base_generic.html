@@ -21,6 +21,7 @@
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'bookinstances' %}">All book copies</a></li>
     <li><a href="{% url 'books' %}">All books</a></li>
+    <li><a href="{% url 'provideers' %}">All provideers</a></li>
     <li><a href="{% url 'authors' %}">All authors</a></li>
     <li><a href="{% url 'genres' %}">All genres</a></li>
     <li><a href="{% url 'languages' %}">All languages</a></li>
@@ -57,6 +58,10 @@
    {% endif %}
    {% if perms.catalog.add_book %}
      <li><a href="{% url 'book-create' %}">Create book</a></li>
+   {% endif %}
+
+    {% if perms.catalog.add_book %}
+     <li><a href="{% url 'provideer-create' %}">Create provideer</a></li>
    {% endif %}
    {% if perms.catalog.add_bookinstance %}
      <li><a href="{% url 'bookinstance-create' %}">Create copy of book</a></li>

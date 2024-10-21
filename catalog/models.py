@@ -6,6 +6,32 @@ from django.urls import reverse  # To generate URLS by reversing URL patterns
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 
+
+class Provideer(models.Model):
+    """Model representing a book (but not a specific copy of a book)."""
+    companyName = models.CharField(max_length=200)
+
+    orderNumber= models.CharField('orderNumber', max_length=13,
+                            unique=True,
+                            help_text='ex. 000000000')
+    
+    inspector = models.CharField(max_length=200)
+
+    inspectionDate = models.DateField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['companyName', 'inspectionDate']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular book record."""
+        return reverse('provideer-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.title
+    
+
+
 class Genre(models.Model):
     """Model representing a book genre (e.g. Science Fiction, Non Fiction)."""
     name = models.CharField(
